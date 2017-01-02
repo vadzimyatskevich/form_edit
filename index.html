@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>KakaduDEV test task</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/bulma/css/bulma.css">
+        <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="js/kakadu.js"></script>
+    </head>
+    <body>
+        <nav class="nav">
+          <div class="nav-left">
+            <a class="nav-item" href="#">
+                <strong>Kakadu DEV  test task</strong>
+            </a>
+          </div>
+
+          <div class="nav-right">
+            <span class="nav-item">
+                <a class="button" href="https://github.com/vadzimyatskevich" target="blank">
+                <span class="icon">
+                  <i class="fa fa-github"></i>
+                </span>
+                <span>Git</span>
+              </a>
+            </span>
+          </div>
+        </nav>
+        <br>
+
+        <div class="container">
+            <div class="columns">
+                <div class="column" id="tableserve">
+                    <p> <strong>FAQ:</strong> Drag&Drop to add form elements. 
+                        Drag&Drop to sort form elements. 
+                        Click to edit form properties. 
+                        "Create" to create and view form code. 
+                        "Save" to save form.
+                    </p>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-half">
+                    <div class="box">
+                        <div class="tabs is-centered">
+                          <ul>
+                            <li class="is-active" data-tab="input"><a>Input</a></li>
+                            <li class="" data-tab="select"><a>Control</a></li>
+                            <li class="" data-tab="button"><a>Buttons</a></li>
+                            <li class="" data-tab="html_form"><a>HTML</a></li>
+                          </ul>
+                        </div>
+
+                        <!--input templates-->
+                        <div class="content" id="input" style="display:inline">
+                            <div class="notification" data-drag="draggable" data-type="input">
+                                <label class="label">Label</label>
+                                <p class="control">
+                                    <input class="input" id="textinput" name="textinput" type="text" placeholder="placeholder">
+                                    <span class="help">help</span>
+                                </p>                            
+                            </div>
+                            <div class="notification" data-drag="draggable" data-type="textarea">
+                                <label class="label">Label</label>
+                                <p class="control">
+                                  <textarea class="textarea" id="textarea" name="textarea" placeholder="placeholder"></textarea>
+                                  <span class="help">help</span>
+                                </p>                            
+                            </div>
+                        </div>
+
+                        <!--selection templates-->
+                        <div class="content" id="select" style="display:none;">
+                            <div class="notification"  data-drag="draggable" data-type="select">
+                                <label class="label">Select</label>
+                                <span class="select">
+                                    <select id="select" name="select">
+                                        <option value="1">option 1</option>
+                                        <option value="2">option 2</option>
+                                        <option value="3">option 3</option>
+                                    </select>
+                                </span>                            
+                            </div>
+                            <div class="notification" data-drag="draggable" data-type="checkbox">
+                                <label class="checkbox"><input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">Remember me</label>
+                                <label class="checkbox"><input type="checkbox" name="checkboxes" id="checkboxes-1" value="2">Remember you</label>                                
+                            </div>
+                            <div class="notification" data-drag="draggable" data-type="radio">
+                              <label class="radio"><input type="radio" name="question" value="1">Yes</label>
+                              <label class="radio"><input type="radio" name="question" value="2">No </label>
+                            </div>
+                        </div>
+
+                        <!--buttons template-->
+                        <div class="content" id="button" style="display:none">
+                            <div class="notification" data-drag="draggable"  data-type="button">
+                                <button class="button"  id="singlebutton" name="singlebutton" style="" type="submit">Button 1</button>
+                            </div>
+                            <div class="notification" data-drag="draggable" data-type="file">
+                                <label class="label">photo</label>    
+                                <input id="filebutton" name="filebutton" class="input-file" type="file">
+                            </div>
+                        </div>
+                        <!--HTML template-->
+                        <!--buttons template-->
+                        <div class="content" id="html_form" style="display:none">
+                            <div class="notification" data-type="html_form">
+                                <label class="label">HTML form</label>
+                                <textarea class="textarea" id="form_text" name="textarea"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-half">
+                    <div class="message" id="form_body">
+                      <div class="message-header" data-click = "clickable"  data-type="form">Form</div>
+                      <div class="message-body" data-drop="droppable sortable">
+                      </div>
+                    </div>
+                    <div class="content">
+                        <a class="button" id="form_save">Create</a>
+                        <a class="button is-primary" id="server_post">Save</a>
+                    </div>
+                </div>
+              </div>
+<!--            <div class="columns">
+                <div class="column" id="testzone"></div>
+            </div>-->
+            <div class="columns">
+                <div class="column" id="tableserve">
+                    <table class="table" id="tbl_forms">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Form name</th>
+                            <th colspan="2">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!--modal window-->
+        <div id="modal" class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-content" >
+            <div class="box" id="window-content">
+                balbabla
+            </div>
+              <div class="content is-center">
+                    <a class="button is-primary" id="mod_save">Save</a>
+                    <a class="button" id="mod_close">Close</a>
+                    <a class="button is-danger" id="mod_delete">Delete</a> 
+              </div>
+          </div>
+          <button class="modal-close"></button>
+        </div>
+    </body>
+</html>
