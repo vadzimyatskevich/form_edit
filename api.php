@@ -1,9 +1,9 @@
 <?php
-// table creation:
-// CREATE TABLE `kakadu`.`forms` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(250) NULL , `form` VARCHAR(2500) NULL , `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
-// to run server: 
-// $ php -S localhost:8888
-
+/*******************************************************************************
+ * 
+ * based on https://www.leaseweb.com/labs/2015/10/creating-a-simple-rest-api-in-php/
+ * 
+ ******************************************************************************/
 $method = $_SERVER['REQUEST_METHOD'];
 $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
 $input = json_decode(file_get_contents('php://input'),true);
@@ -33,14 +33,13 @@ for ($i=0;$i<count($columns);$i++) {
 // create SQL based on HTTP method
 switch ($method) {
   case 'GET':
-    $sql = "select * from `$table`".($key?" WHERE id=$key":''); break;
+    $sql = "select * from `$table`".($key?" where id=$key":''); break;
   case 'PUT':
     $sql = "update `$table` set $set where id=$key"; break;
   case 'POST':
     $sql = "insert into `$table` set $set"; break;
-//    var_dump($_POST['name'], $_POST["form"]);
   case 'DELETE':
-    $sql = "delete FROM `$table` where id=$key"; break;
+    $sql = "delete from `$table` where id=$key"; break;
 }
 // var_dump($sql) ;
 
