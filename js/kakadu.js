@@ -492,8 +492,9 @@ jQuery(document).ready(function ($) {
         name = $(".message-header").text(); //form name
         $.post( "api.php/forms", JSON.stringify({ name: name, form: $('#form_text').text() }),function( data ) {
             console.log( "ID " + data ); //
-        });
-            formGet();
+            ;
+        }).done(formGet());
+
     }
 
 
